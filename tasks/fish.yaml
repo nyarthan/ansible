@@ -1,0 +1,7 @@
+- name: Install fish
+  community.general.pacman:
+    name: fish
+
+- name: Install fisher
+  kewlfft.aur.aur:
+    name: fisher

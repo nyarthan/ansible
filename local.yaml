@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: true
+  become_method: doas
+  pre_tasks:
+    - name: Update cache
+      community.general.pacman:
+        update_cache: true
+  tasks:
+    - include: tasks/fish.yaml
+    - include: tasks/node.yaml

@@ -1,0 +1,9 @@
+- name: Install rust
+  community.general.pacman:
+    name: rust
+    state: present
+
+- name: Install fnm
+  community.general.cargo:
+    name: fnm
+    state: latest
