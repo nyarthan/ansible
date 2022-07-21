@@ -1,10 +1,14 @@
 - hosts: localhost
   become: true
   become_method: doas
+  vars:
+    source_key: "./.ssh/id_ed25519"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   pre_tasks:
     - name: Update cache
       community.general.pacman:
         update_cache: true
   tasks:
+    - include: tasks/ssh.yaml
     - include: tasks/fish.yaml
     - include: tasks/node.yaml
