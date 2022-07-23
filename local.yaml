@@ -1,14 +1,17 @@
 - hosts: localhost
   become: true
-  become_method: doas
+  # become_method: doas # doas asks every time for some reason
   vars:
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   pre_tasks:
     - name: Update cache
+      become: true
       community.general.pacman:
         update_cache: true
   tasks:
     - include: tasks/ssh.yaml
     - include: tasks/fish.yaml
     - include: tasks/node.yaml
+    - include: tasks/nvim.yaml
+    - include: tasks/misc.yaml
