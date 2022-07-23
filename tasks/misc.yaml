@@ -1,0 +1,7 @@
+- name: Install lazygit
+  community.general.pacman:
+    name: lazygit
+
+- name: Install feh
+  community.general.pacman:
+    name: feh
